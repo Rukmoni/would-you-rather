@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Image } from "semantic-ui-react";
+import { Image,Dropdown } from "semantic-ui-react";
 
 class NavBar extends Component {
   render() {
@@ -10,36 +10,40 @@ class NavBar extends Component {
       <div className="ui fixed inverted menu">
         <div className="ui container">
           <div className="item" />
+          <Image
+              src="/would-you-rather.png"
+              style={{ width: "50px", marginRight: "5px" }}
+            />
           <NavLink
             to="/"
             exact
             className="header item"
             activeClassName="active"
           >
-            <Image
-              src="/would-you-rather.png"
-              style={{ width: "50px", marginRight: "5px" }}
-            />
-            Home
+           
+            DashBoard
           </NavLink>
-          <NavLink to="/add" exact className="item" activeClassName="active">
-            New Question
-          </NavLink>
-          <NavLink
-            to="/leaderboard"
-            exact
-            className="item"
-            activeClassName="active"
-          >
-            Leader Board
-          </NavLink>
+          <Dropdown text='Polls' pointing='down' className='link item'>
+            <Dropdown.Menu>
+            
+              <Dropdown.Item>Add New Poll</Dropdown.Item>
+              <Dropdown.Item>LeaderBoard</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+       
+     
           <div className="ui right floated item">
-            <span style={{ marginRight: "10px" }}>Hello</span>
+          <Dropdown text='Profile' pointing='down' className='link item'>
+            <Dropdown.Menu>
+            
+              <Dropdown.Item>Profile</Dropdown.Item>
+              <Dropdown.Item>Logout</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          
            {/*  <img className="ui avatar image" src={} alt="" /> */}
           </div>
-          <NavLink to="/logout" exact className="item" activeClassName="active">
-            Logout
-          </NavLink>
+       
         </div>
       </div>
     );
